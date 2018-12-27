@@ -7,14 +7,9 @@ app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
 });
 
-io.on('pong', function(msg){
-    console.log(msg);
-    io.emit('pong', msg);
-});
-
 io.on('connection', function(socket){
 
-    socket.on('message', function(msg){
+    socket.on('move', function(msg){
         io.emit('pong', msg);
     });
 });
